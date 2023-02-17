@@ -30,7 +30,7 @@ jobs:
       run: cargo  --version
 
     - name: Ubuntu - apt-get install libgtk-3-dev
-      if: ${{ contains( matrix.environment, 'pull_request') }}
+      if: ${{ contains( matrix.environment, 'ubuntu') }}
       run: sudo apt-get install libgtk-3-dev
 
     - name: install tauri

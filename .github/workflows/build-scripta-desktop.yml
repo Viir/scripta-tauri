@@ -29,9 +29,10 @@ jobs:
     - name: Display Cargo version
       run: cargo  --version
 
-    - name: Ubuntu - apt-get install libgtk-3-dev
+    - name: Ubuntu - install dependencies of Tauri
       if: ${{ contains( matrix.environment, 'ubuntu') }}
       run: sudo apt-get install libgtk-3-dev
+      run: sudo apt install libsoup2.4-dev
 
     - name: install tauri
       run: cargo  install  tauri-cli

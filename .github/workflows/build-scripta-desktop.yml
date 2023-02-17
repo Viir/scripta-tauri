@@ -26,9 +26,6 @@ jobs:
     - name: npm  install -g  elm
       run: npm  install -g  elm
 
-    - name: elm-tooling install
-      run: npx elm-tooling install
-
     - name: Display Cargo version
       run: cargo  --version
 

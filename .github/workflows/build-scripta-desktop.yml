@@ -21,7 +21,7 @@ jobs:
     - name: Avoid git mutating files on checkout
       run: |
         git config --global core.autocrlf false
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: npm  install -g  elm
       run: npm  install -g  elm

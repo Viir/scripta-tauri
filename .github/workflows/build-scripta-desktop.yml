@@ -29,20 +29,14 @@ jobs:
     - name: install tauri
       run: cargo  install  tauri-cli
 
+    - name: rustc  --print target-list
+      run: rustc  --print target-list
+
     - name: build the app
       run: cargo  tauri  build
 
     - name: Publish artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: elm-time-bin-${{github.sha}}-${{ matrix.publish-runtime-id }}
+        name: scripta-desktop-${{github.sha}}-${{ matrix.publish-runtime-id }}
         path: ./publish
-    - name: dotnet publish with separate assemblies
-      run: dotnet publish -c Debug ./implement/elm-time --output ./publish-separate-assemblies
-    - name: Publish artifacts with separate assemblies
-      uses: actions/upload-artifact@v1
-      with:
-        name: elm-time-separate-assemblies-${{github.sha}}-${{ matrix.publish-runtime-id }}
-        path: ./publish-separate-assemblies
-    - name: Elm App Compiler - Run tests with elm-time elm-test-rs
-      run: ./publish/elm-time  elm-test-rs  ./implement/elm-time/ElmTime/compile-elm-program

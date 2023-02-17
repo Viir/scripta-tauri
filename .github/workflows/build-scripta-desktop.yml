@@ -22,23 +22,13 @@ jobs:
       run: |
         git config --global core.autocrlf false
     - uses: actions/checkout@v2
-    - uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '7.0.200'
-        include-prerelease: true
-    - name: Try use dotnet
-      run: dotnet --info
-    - uses: actions/checkout@v2
 
-    - name: Clean package cache as a temporary workaround for https://github.com/actions/setup-dotnet/issues/155
-      run: dotnet clean ./implement/test-elm-time/test-elm-time.csproj && dotnet nuget locals all --clear
+    - name: Display Cargo version
+      run: cargo  --version
 
-    - name: Run tests with dotnet test
-      run: dotnet test ./implement/test-elm-time/test-elm-time.csproj --logger trx
-    - name: dotnet publish
-      env:
-        PUBLISH_RUNTIME_ID: ${{ matrix.publish-runtime-id }}
-      run: dotnet publish -c Debug -r ${{ env.PUBLISH_RUNTIME_ID }} --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -p:PublishReadyToRun=true -p:PublishReadyToRunShowWarnings=true  --output ./publish  ./implement/elm-time
+    - name: Build
+      run: cargo  tauri  build
+
     - name: Publish artifacts
       uses: actions/upload-artifact@v1
       with:

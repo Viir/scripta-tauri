@@ -1,4 +1,4 @@
-name: test-and-publish
+name: Build Scripta Desktop
 
 on: [push,workflow_dispatch]
 

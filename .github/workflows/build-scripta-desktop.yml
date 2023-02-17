@@ -26,7 +26,10 @@ jobs:
     - name: Display Cargo version
       run: cargo  --version
 
-    - name: Build
+    - name: install tauri
+      run: cargo  install  tauri-cli
+
+    - name: build the app
       run: cargo  tauri  build
 
     - name: Publish artifacts

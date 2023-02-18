@@ -12,8 +12,10 @@ jobs:
         include:
           - environment: ubuntu-22.04
             publish-runtime-id: linux-x64
+            publish-path: ./src-tauri/
           - environment: windows-2022
             publish-runtime-id: win10-x64
+            publish-path: ./src-tauri/
 
     runs-on: ${{ matrix.environment }}
 
@@ -47,4 +49,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: scripta-desktop-${{github.sha}}-${{ matrix.publish-runtime-id }}
-        path: ./
+        path: ${{ matrix.publish-path }}

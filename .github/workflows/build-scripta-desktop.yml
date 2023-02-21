@@ -44,7 +44,7 @@ jobs:
       run: rustc  --print target-list
 
     - name: build the app
-      run: cargo  tauri  build  --verbose
+      run: cargo  tauri  build  --verbose  --debug
 
     - name: Publish artifacts
       uses: actions/upload-artifact@v1
